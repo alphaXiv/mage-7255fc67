@@ -1,12 +1,12 @@
 {
-  "experiment": "dcvc-cross-codec-robustness",
+  "experiment": "dcvc-train-half-extension",
   "checkpoint": "microsoft/Mage-VL",
   "seed": 260724904,
   "max_pixels": 150000,
   "max_new_tokens": 8,
   "timing_repeats": 3,
-  "record_positions": true,
-  "video_ids": ["video_6860", "video_9253", "video_8241", "video_1580"],
+  "record_positions": false,
+  "video_ids": ["video_10993", "video_2564", "video_874", "video_3501"],
   "methods": [
     {
       "name": "uniform-frame8",
