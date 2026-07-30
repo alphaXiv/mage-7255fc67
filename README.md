@@ -1,3 +1,37 @@
+## Independent reproduction: codec-native video efficiency
+
+**Paper:** [Mage-VL: An Efficient Codec-Native Streaming Multimodal Foundation Model (arXiv:2607.24904)](https://arxiv.org/abs/2607.24904)<br>
+**Assessment:** **Partially reproduced.**
+
+We tested the claim that codec-guided patch selection removes at least 75% of visual tokens while preserving video understanding and lowering latency. On 36 questions from eight licensed public Perception Test videos, HEVC `tc8` used **1,152 tokens versus 96,512** for uniform 64-frame processing over the same source horizon: **98.81% fewer** than dense processing, above the paper's “over 75%” claim, with **71.68×** lower warm preprocessing-inclusive latency and 72.2% versus 75.0% accuracy (paired Δ −2.8 pp, 95% CI −11.1 to 5.6). However, the approximately token-matched stress test used 12,672 versus 12,064 tokens and reached 69.4% versus 80.6% while taking 2.42× longer, so this bounded setup did not show the paper's fixed-budget accuracy/latency effect. DCVC-RT and HEVC both scored 26/36 without retraining, preserving the alternate-codec trend.
+
+This is a preregistered public slice rather than the paper's full NExT-QA protocol: it uses the released Mage-VL checkpoint, Mage-VL's own uniform processor rather than Qwen3-VL, greedy decoding, and question-level paired bootstrapping. All experiments ran on **Kubernetes** with **NVIDIA RTX PRO 6000 Blackwell** GPUs, four allocated per experiment, **16 GPUs peak concurrent**, over **0.40 hours actual campaign wall time**.
+
+[Read the illustrated report](reports/mage-vl-codec-reproduction/report.md) · [inspect aggregated results](artifacts/mage-vl-codec-reproduction/results.json) · [open the self-contained notebook](notebooks/mage_vl_reproduction.py)
+
+[![Open in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/alphaXiv/mage-7255fc67/blob/main/notebooks/mage_vl_reproduction.py)
+
+### Experiment log
+
+Every experiment used the exact run command shown below; branches preserve the code that produced each frozen measurement.
+
+| Branch / experiment | Purpose or change | Exact run command | Assessment / outcome | Compute |
+|---|---|---|---|---|
+| `main` | Public landing page and synthesis | Not run as an experiment (publication surface) | Presentation only | — |
+| [`full-perception-tc8`](https://github.com/alphaXiv/mage-7255fc67/tree/orx/full-perception-tc8) | Primary 36-question tc8 comparison | `bash repro/run.sh` | 90.45% fewer tokens, 6.76× faster; −8.33 pp accuracy | Kubernetes, 4× RTX PRO 6000 Blackwell, 3.10 min |
+| [`tc4`](https://github.com/alphaXiv/mage-7255fc67/tree/orx/tc4-perception-budget) | Low-budget frontier | `bash repro/run.sh` | 90.45% fewer, 5.21× faster; −5.56 pp | Kubernetes, 4× RTX PRO 6000 Blackwell, 2.03 min |
+| [`tc16`](https://github.com/alphaXiv/mage-7255fc67/tree/orx/tc16-perception-budget) | Mid-budget frontier | `bash repro/run.sh` | 90.45% fewer, 6.91× faster; −2.78 pp | Kubernetes, 4× RTX PRO 6000 Blackwell, 4.28 min |
+| [`tc32`](https://github.com/alphaXiv/mage-7255fc67/tree/orx/tc32-perception-budget) | High-budget frontier | `bash repro/run.sh` | 90.45% fewer, 6.39× faster; +2.78 pp | Kubernetes, 4× RTX PRO 6000 Blackwell, 6.15 min |
+| [`matched-duration`](https://github.com/alphaXiv/mage-7255fc67/tree/orx/dense64-matched-duration) | tc8 versus dense uniform64 over the same source horizon | `bash repro/run.sh` | 98.81% fewer, 71.68× faster; −2.78 pp | Kubernetes, 4× RTX PRO 6000 Blackwell, 13.57 min |
+| [`token-matched`](https://github.com/alphaXiv/mage-7255fc67/tree/orx/token-matched-tc84) | Approximately equal measured-token stress test | `bash repro/run.sh` | −11.11 pp and 2.42× slower; effect not shown | Kubernetes, 4× RTX PRO 6000 Blackwell, 3.93 min |
+| [`DCVC validation A`](https://github.com/alphaXiv/mage-7255fc67/tree/orx/dcvc-validation-half), [`B`](https://github.com/alphaXiv/mage-7255fc67/tree/orx/dcvc-train-half) | Alternate-codec evaluation across disjoint video halves | `bash repro/run.sh` | Combined DCVC-RT = HEVC = 26/36 | Kubernetes, 4× RTX PRO 6000 Blackwell, 2.47 / 2.30 min |
+| [`medium-duration`](https://github.com/alphaXiv/mage-7255fc67/tree/orx/medium-duration-control) | 60/120-second licensed-video diagnostic | `bash repro/run.sh` | 96.41% token reduction; timing diagnostic only | Kubernetes, 4× RTX PRO 6000 Blackwell, 1.40 min |
+| [`timing-repeat`](https://github.com/alphaXiv/mage-7255fc67/tree/orx/tc8-independent-timing-replicate) | Independent tc8 timing repeat | `bash repro/run.sh` | 6.54× versus 6.76× primary speedup | Kubernetes, 4× RTX PRO 6000 Blackwell, 2.88 min |
+
+Re-render the five evidence figures with `python3 reproduction/analyze.py`. The notebook is validated with `marimo check notebooks/mage_vl_reproduction.py`; opening it does not rerun expensive model inference.
+
+---
+
 <div align="center">
 
 # Mage: A Lightweight, Research-Friendly Multimodal Model Family

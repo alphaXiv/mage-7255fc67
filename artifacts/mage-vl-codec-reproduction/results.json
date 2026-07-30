@@ -1,0 +1,92 @@
+{
+  "paper_id": "2607.24904",
+  "verdict": "partially-reproduced",
+  "evaluation": {
+    "benchmark": "lmms-lab/PerceptionTest sample split",
+    "videos": 8,
+    "questions": 36,
+    "checkpoint": "microsoft/Mage-VL",
+    "timing": "single-sample, warm, preprocessing-inclusive end-to-end latency",
+    "bootstrap": "10,000 paired question-level resamples, seed 260724904"
+  },
+  "compute": {
+    "backend": "Kubernetes",
+    "gpu_model": "NVIDIA RTX PRO 6000 Blackwell",
+    "gpus_per_experiment": 4,
+    "peak_concurrent_gpus": 16,
+    "campaign_wall_hours": 0.40
+  },
+  "budget_sweep": [
+    {
+      "budget": 4,
+      "codec": {"accuracy_pct": 72.22, "tokens": 576, "preprocess_s": 0.1309, "generate_s": 0.0674, "e2e_s": 0.1993, "peak_gib": 9.148},
+      "uniform": {"accuracy_pct": 77.78, "tokens": 6032, "preprocess_s": 0.6487, "generate_s": 0.4097, "e2e_s": 1.038, "peak_gib": 10.843},
+      "codec_minus_uniform_pp": -5.56,
+      "delta_ci95_pp": [-13.89, 0.00],
+      "uniform_over_codec_speedup": 5.21,
+      "speedup_ci95": [4.94, 5.59]
+    },
+    {
+      "budget": 8,
+      "codec": {"accuracy_pct": 72.22, "tokens": 1152, "preprocess_s": 0.2283, "generate_s": 0.0976, "e2e_s": 0.3295, "peak_gib": 9.475},
+      "uniform": {"accuracy_pct": 80.56, "tokens": 12064, "preprocess_s": 1.3522, "generate_s": 0.9010, "e2e_s": 2.2272, "peak_gib": 12.766},
+      "codec_minus_uniform_pp": -8.33,
+      "delta_ci95_pp": [-19.44, 0.00],
+      "uniform_over_codec_speedup": 6.76,
+      "speedup_ci95": [5.42, 7.35]
+    },
+    {
+      "budget": 16,
+      "codec": {"accuracy_pct": 69.44, "tokens": 2304, "preprocess_s": 0.4376, "generate_s": 0.1789, "e2e_s": 0.6363, "peak_gib": 10.210},
+      "uniform": {"accuracy_pct": 72.22, "tokens": 24128, "preprocess_s": 2.3870, "generate_s": 2.0230, "e2e_s": 4.3950, "peak_gib": 16.620},
+      "codec_minus_uniform_pp": -2.78,
+      "delta_ci95_pp": [-13.89, 5.56],
+      "uniform_over_codec_speedup": 6.91,
+      "speedup_ci95": [5.01, 7.52]
+    },
+    {
+      "budget": 32,
+      "codec": {"accuracy_pct": 75.00, "tokens": 4608, "preprocess_s": 0.8320, "generate_s": 0.3870, "e2e_s": 1.2080, "peak_gib": 11.320},
+      "uniform": {"accuracy_pct": 72.22, "tokens": 48256, "preprocess_s": 2.7460, "generate_s": 4.9650, "e2e_s": 7.7220, "peak_gib": 24.300},
+      "codec_minus_uniform_pp": 2.78,
+      "delta_ci95_pp": [-5.56, 13.89],
+      "uniform_over_codec_speedup": 6.39,
+      "speedup_ci95": [5.89, 6.93]
+    }
+  ],
+  "matched_duration": {
+    "codec": {"method": "hevc-tc8", "accuracy_pct": 72.22, "tokens": 1152, "e2e_s": 0.322, "peak_gib": 9.47},
+    "uniform": {"method": "uniform-frame64", "accuracy_pct": 75.00, "tokens": 96512, "e2e_s": 23.061, "peak_gib": 39.68},
+    "token_reduction_pct": 98.81,
+    "codec_minus_uniform_pp": -2.78,
+    "delta_ci95_pp": [-11.11, 5.56],
+    "uniform_over_codec_speedup": 71.68,
+    "speedup_ci95": [68.43, 86.20]
+  },
+  "approximately_token_matched": {
+    "codec": {"method": "hevc-tc84", "accuracy_pct": 69.44, "tokens": 12672, "e2e_s": 5.466, "peak_gib": 13.54},
+    "uniform": {"method": "uniform-frame8", "accuracy_pct": 80.56, "tokens": 12064, "e2e_s": 2.255, "peak_gib": 12.77},
+    "codec_minus_uniform_pp": -11.11,
+    "delta_ci95_pp": [-22.22, -2.78],
+    "uniform_over_codec_speedup": 0.41,
+    "speedup_ci95": [0.32, 0.64]
+  },
+  "alternate_codec": {
+    "questions": 36,
+    "hevc": {"correct": 26, "accuracy_pct": 72.22, "tokens": 1152},
+    "dcvc_rt": {"correct": 26, "accuracy_pct": 72.22, "tokens": 1152},
+    "uniform": {"correct": 29, "accuracy_pct": 80.56, "tokens": 12064},
+    "median_topk_jaccard": 0.1725,
+    "median_smaller_set_coverage": 0.2943
+  },
+  "medium_duration_diagnostic": [
+    {"duration_s": 60, "method": "hevc-tc8", "tokens": 480, "preprocess_s": 0.800, "generate_s": 0.432, "peak_gib": 9.16},
+    {"duration_s": 60, "method": "uniform-frame64", "tokens": 13376, "preprocess_s": 3.048, "generate_s": 1.737, "peak_gib": 13.20},
+    {"duration_s": 120, "method": "hevc-tc8", "tokens": 480, "preprocess_s": 0.753, "generate_s": 0.850, "peak_gib": 9.16},
+    {"duration_s": 120, "method": "uniform-frame64", "tokens": 13376, "preprocess_s": 3.082, "generate_s": 1.742, "peak_gib": 13.20}
+  ],
+  "controls": {
+    "rotated_answer_options": "The tc8 result repeated exactly: 26/36 codec versus 29/36 uniform.",
+    "independent_timing_repeat": "6.54x warm preprocessing-inclusive speedup versus 6.76x in the primary tc8 run."
+  }
+}

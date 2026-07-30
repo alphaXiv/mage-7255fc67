@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520">
+<style>text{font-family:Inter,Arial,sans-serif;fill:#17202A}.title{font-size:24px;font-weight:700}.axis{font-size:14px}.note{font-size:13px;fill:#4D5656}.grid{stroke:#D5D8DC;stroke-width:1}.legend{font-size:14px;font-weight:600}</style>
+<rect width="1000" height="520" fill="#FCFCFA"/>
+<text x="55" y="38" class="title">Codec selection removed at least 90% of measured visual tokens</text>
+<line x1="90" y1="375.0" x2="850" y2="375.0" class="grid"/>
+<text x="78" y="380.0" text-anchor="end" class="axis">75%</text>
+<line x1="90" y1="315.0" x2="850" y2="315.0" class="grid"/>
+<text x="78" y="320.0" text-anchor="end" class="axis">80%</text>
+<line x1="90" y1="195.0" x2="850" y2="195.0" class="grid"/>
+<text x="78" y="200.0" text-anchor="end" class="axis">90%</text>
+<line x1="90" y1="75.0" x2="850" y2="75.0" class="grid"/>
+<text x="78" y="80.0" text-anchor="end" class="axis">100%</text>
+<rect x="115" y="189.6" width="75" height="245.4" rx="5" fill="#146C94"/>
+<text x="152.5" y="180.6" text-anchor="middle" class="legend">90.5%</text>
+<text x="152.5" y="458" text-anchor="middle" class="axis">tc4</text>
+<rect x="219" y="189.6" width="75" height="245.4" rx="5" fill="#146C94"/>
+<text x="256.5" y="180.6" text-anchor="middle" class="legend">90.5%</text>
+<text x="256.5" y="458" text-anchor="middle" class="axis">tc8</text>
+<rect x="323" y="189.6" width="75" height="245.4" rx="5" fill="#146C94"/>
+<text x="360.5" y="180.6" text-anchor="middle" class="legend">90.5%</text>
+<text x="360.5" y="458" text-anchor="middle" class="axis">tc16</text>
+<rect x="427" y="189.6" width="75" height="245.4" rx="5" fill="#146C94"/>
+<text x="464.5" y="180.6" text-anchor="middle" class="legend">90.5%</text>
+<text x="464.5" y="458" text-anchor="middle" class="axis">tc32</text>
+<rect x="531" y="89.3" width="75" height="345.7" rx="5" fill="#146C94"/>
+<text x="568.5" y="80.3" text-anchor="middle" class="legend">98.8%</text>
+<text x="568.5" y="458" text-anchor="middle" class="axis">tc8 vs 64f</text>
+<rect x="635" y="118.1" width="75" height="316.9" rx="5" fill="#146C94"/>
+<text x="672.5" y="109.1" text-anchor="middle" class="legend">96.4%</text>
+<text x="672.5" y="458" text-anchor="middle" class="axis">BBB 60s</text>
+<rect x="739" y="118.1" width="75" height="316.9" rx="5" fill="#146C94"/>
+<text x="776.5" y="109.1" text-anchor="middle" class="legend">96.4%</text>
+<text x="776.5" y="458" text-anchor="middle" class="axis">BBB 120s</text>
+<line x1="90" y1="375.0" x2="850" y2="375.0" stroke="#C0392B" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="675" y="416" class="note" fill="#C0392B">paper headline threshold</text>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520">
+<style>text{font-family:Inter,Arial,sans-serif;fill:#17202A}.title{font-size:24px;font-weight:700}.axis{font-size:14px}.note{font-size:13px;fill:#4D5656}.grid{stroke:#D5D8DC;stroke-width:1}.legend{font-size:14px;font-weight:600}</style>
+<rect width="1000" height="520" fill="#FCFCFA"/>
+<text x="55" y="38" class="title">Sparse selection kept peak GPU memory nearly flat</text>
+<line x1="100" y1="409.4" x2="840" y2="409.4" class="grid"/>
+<text x="88" y="414.4" text-anchor="end" class="axis">10 GiB</text>
+<line x1="100" y1="306.5" x2="840" y2="306.5" class="grid"/>
+<text x="88" y="311.5" text-anchor="end" class="axis">20 GiB</text>
+<line x1="100" y1="203.5" x2="840" y2="203.5" class="grid"/>
+<text x="88" y="208.5" text-anchor="end" class="axis">30 GiB</text>
+<line x1="100" y1="100.6" x2="840" y2="100.6" class="grid"/>
+<text x="88" y="105.6" text-anchor="end" class="axis">40 GiB</text>
+<polyline points="100.0,418.2 346.7,414.8 593.3,407.2 840.0,395.8" fill="none" stroke="#146C94" stroke-width="4"/>
+<circle cx="100.0" cy="418.2" r="7" fill="#146C94"/>
+<circle cx="346.7" cy="414.8" r="7" fill="#146C94"/>
+<circle cx="593.3" cy="407.2" r="7" fill="#146C94"/>
+<circle cx="840.0" cy="395.8" r="7" fill="#146C94"/>
+<polyline points="100.0,400.7 346.7,380.9 593.3,341.3 840.0,262.2" fill="none" stroke="#D95F02" stroke-width="4"/>
+<circle cx="100.0" cy="400.7" r="7" fill="#D95F02"/>
+<circle cx="346.7" cy="380.9" r="7" fill="#D95F02"/>
+<circle cx="593.3" cy="341.3" r="7" fill="#D95F02"/>
+<circle cx="840.0" cy="262.2" r="7" fill="#D95F02"/>
+<text x="100.0" y="462" text-anchor="middle" class="axis">N=4</text>
+<text x="346.7" y="462" text-anchor="middle" class="axis">N=8</text>
+<text x="593.3" y="462" text-anchor="middle" class="axis">N=16</text>
+<text x="840.0" y="462" text-anchor="middle" class="axis">N=32</text>
+<circle cx="640" cy="35" r="6" fill="#146C94"/><text x="652" y="40" class="legend">codec-guided</text>
+<circle cx="770" cy="35" r="6" fill="#D95F02"/><text x="782" y="40" class="legend">uniform</text>
+<text x="470" y="500" text-anchor="middle" class="note">Peak allocated memory reported by PyTorch; single-sample inference.</text>
+</svg>

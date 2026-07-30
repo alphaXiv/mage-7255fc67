@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520">
+<style>text{font-family:Inter,Arial,sans-serif;fill:#17202A}.title{font-size:24px;font-weight:700}.axis{font-size:14px}.note{font-size:13px;fill:#4D5656}.grid{stroke:#D5D8DC;stroke-width:1}.legend{font-size:14px;font-weight:600}</style>
+<rect width="1000" height="520" fill="#FCFCFA"/>
+<text x="55" y="38" class="title">Alternate codec: same accuracy, different selected patches</text>
+<rect x="105" y="202.5" width="115" height="227.5" rx="6" fill="#146C94"/>
+<text x="162.5" y="192.5" text-anchor="middle" class="title" font-size="20">72.2%</text>
+<text x="162.5" y="456" text-anchor="middle" class="legend">HEVC</text>
+<text x="162.5" y="477" text-anchor="middle" class="note">1,152 tokens</text>
+<rect x="285" y="202.5" width="115" height="227.5" rx="6" fill="#6A3D9A"/>
+<text x="342.5" y="192.5" text-anchor="middle" class="title" font-size="20">72.2%</text>
+<text x="342.5" y="456" text-anchor="middle" class="legend">DCVC-RT</text>
+<text x="342.5" y="477" text-anchor="middle" class="note">1,152 tokens</text>
+<rect x="465" y="176.2" width="115" height="253.8" rx="6" fill="#D95F02"/>
+<text x="522.5" y="166.2" text-anchor="middle" class="title" font-size="20">80.6%</text>
+<text x="522.5" y="456" text-anchor="middle" class="legend">Uniform</text>
+<text x="522.5" y="477" text-anchor="middle" class="note">12,064 tokens</text>
+<rect x="650" y="105" width="195" height="235" rx="10" fill="#EEF2F7"/>
+<text x="748" y="145" text-anchor="middle" class="legend">HEVC ↔ DCVC top-k</text>
+<text x="748" y="210" text-anchor="middle" class="title">17.2%</text>
+<text x="748" y="234" text-anchor="middle" class="note">median Jaccard</text>
+<text x="748" y="292" text-anchor="middle" class="title">29.4%</text>
+<text x="748" y="316" text-anchor="middle" class="note">smaller-set coverage</text>
+<text x="650" y="382" class="note">36 questions; no retraining.</text>
+</svg>

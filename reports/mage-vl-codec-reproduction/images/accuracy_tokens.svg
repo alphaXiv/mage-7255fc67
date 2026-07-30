@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520">
+<style>text{font-family:Inter,Arial,sans-serif;fill:#17202A}.title{font-size:24px;font-weight:700}.axis{font-size:14px}.note{font-size:13px;fill:#4D5656}.grid{stroke:#D5D8DC;stroke-width:1}.legend{font-size:14px;font-weight:600}</style>
+<rect width="1000" height="520" fill="#FCFCFA"/>
+<text x="55" y="38" class="title">Accuracy versus measured visual tokens</text>
+<line x1="90" y1="402.3" x2="790" y2="402.3" class="grid"/>
+<text x="78" y="407.3" text-anchor="end" class="axis">68%</text>
+<line x1="90" y1="316.9" x2="790" y2="316.9" class="grid"/>
+<text x="78" y="321.9" text-anchor="end" class="axis">72%</text>
+<line x1="90" y1="231.5" x2="790" y2="231.5" class="grid"/>
+<text x="78" y="236.5" text-anchor="end" class="axis">76%</text>
+<line x1="90" y1="146.1" x2="790" y2="146.1" class="grid"/>
+<text x="78" y="151.1" text-anchor="end" class="axis">80%</text>
+<polyline points="411.0,193.5 505.8,134.1 600.5,312.2 695.3,312.2 790.0,252.8" fill="none" stroke="#D95F02" stroke-width="2" opacity=".55"/>
+<polyline points="90.0,312.2 184.7,312.2 279.5,371.5 374.2,252.8 512.5,371.5" fill="none" stroke="#146C94" stroke-width="2" opacity=".55"/>
+<circle cx="90.0" cy="312.2" r="7" fill="#146C94" stroke="#fff" stroke-width="2"/>
+<text x="99.0" y="305.2" class="note">4</text>
+<circle cx="411.0" cy="193.5" r="7" fill="#D95F02" stroke="#fff" stroke-width="2"/>
+<text x="420.0" y="186.5" class="note">4</text>
+<circle cx="184.7" cy="312.2" r="7" fill="#146C94" stroke="#fff" stroke-width="2"/>
+<text x="193.7" y="305.2" class="note">8</text>
+<circle cx="505.8" cy="134.1" r="7" fill="#D95F02" stroke="#fff" stroke-width="2"/>
+<text x="514.8" y="127.1" class="note">8</text>
+<circle cx="279.5" cy="371.5" r="7" fill="#146C94" stroke="#fff" stroke-width="2"/>
+<text x="288.5" y="364.5" class="note">16</text>
+<circle cx="600.5" cy="312.2" r="7" fill="#D95F02" stroke="#fff" stroke-width="2"/>
+<text x="609.5" y="305.2" class="note">16</text>
+<circle cx="374.2" cy="252.8" r="7" fill="#146C94" stroke="#fff" stroke-width="2"/>
+<text x="383.2" y="245.8" class="note">32</text>
+<circle cx="695.3" cy="312.2" r="7" fill="#D95F02" stroke="#fff" stroke-width="2"/>
+<text x="704.3" y="305.2" class="note">32</text>
+<circle cx="790.0" cy="252.8" r="7" fill="#D95F02" stroke="#fff" stroke-width="2"/>
+<text x="799.0" y="245.8" class="note">64f</text>
+<circle cx="512.5" cy="371.5" r="7" fill="#146C94" stroke="#fff" stroke-width="2"/>
+<text x="521.5" y="364.5" class="note">tc84*</text>
+<line x1="90" y1="445" x2="790" y2="445" stroke="#17202A"/>
+<line x1="90" y1="445" x2="90" y2="82" stroke="#17202A"/>
+<text x="440.0" y="495" text-anchor="middle" class="axis">retained visual tokens (log scale)</text>
+<circle cx="590" cy="60" r="6" fill="#146C94"/><text x="602" y="65" class="legend">codec-guided</text>
+<circle cx="730" cy="60" r="6" fill="#D95F02"/><text x="742" y="65" class="legend">uniform</text>
+<text x="90" y="510" class="note">Labels are nominal N; *tc84 is the approximately token-matched stress test.</text>
+</svg>
