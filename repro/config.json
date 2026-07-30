@@ -1,16 +1,25 @@
 {
-  "experiment": "perception-test-codec-scout",
+  "experiment": "matched-duration-dense64-vs-tc8",
   "checkpoint": "microsoft/Mage-VL",
   "seed": 260724904,
   "max_pixels": 150000,
   "max_new_tokens": 8,
   "timing_repeats": 3,
-  "video_ids": ["video_6860", "video_9253"],
+  "video_ids": [
+    "video_10993",
+    "video_2564",
+    "video_874",
+    "video_3501",
+    "video_6860",
+    "video_9253",
+    "video_8241",
+    "video_1580"
+  ],
   "methods": [
     {
-      "name": "uniform-frame8",
+      "name": "uniform-frame64",
       "backend": "frames",
-      "budget": 8
+      "budget": 64
     },
     {
       "name": "hevc-tc8",
