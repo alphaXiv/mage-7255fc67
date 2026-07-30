@@ -25,11 +25,23 @@ from run_reproduction import (
 def prepare_clips(config: dict) -> dict[str, Path]:
     root = Path(".cache/medium_control")
     root.mkdir(parents=True, exist_ok=True)
-    source = root / "big_buck_bunny.mp4"
+    source = root / "BigBuckBunny_320x180.mp4"
+    archive = root / "BigBuckBunny_320x180.mp4.zip"
     if not source.exists():
-        temp = source.with_suffix(".part")
-        urllib.request.urlretrieve(config["source"]["url"], temp)
-        temp.replace(source)
+        if not archive.exists():
+            temp = archive.with_suffix(".part")
+            request = urllib.request.Request(
+                config["source"]["url"],
+                headers={"User-Agent": "Mage-VL-reproduction/1.0"},
+            )
+            with urllib.request.urlopen(request) as response, temp.open("wb") as out:
+                while block := response.read(1024 * 1024):
+                    out.write(block)
+            temp.replace(archive)
+        subprocess.run(
+            ["bsdtar", "-xf", str(archive), "-C", str(root)],
+            check=True,
+        )
     clips = {}
     for spec in config["clips"]:
         output = root / f"{spec['name']}.mp4"
