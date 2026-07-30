@@ -1,22 +1,31 @@
 {
-  "experiment": "perception-test-codec-scout",
+  "experiment": "full-perception-tc16",
   "checkpoint": "microsoft/Mage-VL",
   "seed": 260724904,
   "max_pixels": 150000,
   "max_new_tokens": 8,
   "timing_repeats": 3,
-  "video_ids": ["video_6860", "video_9253"],
+  "video_ids": [
+    "video_10993",
+    "video_2564",
+    "video_874",
+    "video_3501",
+    "video_6860",
+    "video_9253",
+    "video_8241",
+    "video_1580"
+  ],
   "methods": [
     {
-      "name": "uniform-frame8",
+      "name": "uniform-frame16",
       "backend": "frames",
-      "budget": 8
+      "budget": 16
     },
     {
-      "name": "hevc-tc8",
+      "name": "hevc-tc16",
       "backend": "codec",
       "codec_engine": "hevc",
-      "budget": 8
+      "budget": 16
     }
   ],
   "public_data": {
