@@ -1,5 +1,5 @@
 {
-  "experiment": "full-perception-tc8",
+  "experiment": "token-matched-codec-tc84",
   "checkpoint": "microsoft/Mage-VL",
   "seed": 260724904,
   "max_pixels": 150000,
@@ -22,10 +22,10 @@
       "budget": 8
     },
     {
-      "name": "hevc-tc8",
+      "name": "hevc-tc84",
       "backend": "codec",
       "codec_engine": "hevc",
-      "budget": 8
+      "budget": 84
     }
   ],
   "public_data": {
