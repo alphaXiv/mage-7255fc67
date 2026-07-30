@@ -217,6 +217,20 @@ def worker(
         total_frames = source_frame_count(video)
         local_config = dict(config, _device=device)
         for q_index, question in enumerate(questions):
+            question = dict(question)
+            rotation = 0
+            if config.get("cyclic_option_rotation"):
+                option_count = len(question["options"])
+                rotation = (
+                    sum(ord(char) for char in video_id) + int(question["id"])
+                ) % option_count
+                question["options"] = (
+                    question["options"][rotation:]
+                    + question["options"][:rotation]
+                )
+                question["answer_id"] = (
+                    int(question["answer_id"]) - rotation
+                ) % option_count
             prompt = build_prompt(processor, question)
             pre_start = time.perf_counter()
             inputs = method_inputs(
@@ -249,6 +263,7 @@ def worker(
                 "worker": worker_index,
                 "video_id": video_id,
                 "question_id": int(question["id"]),
+                "option_rotation": rotation,
                 "area": question.get("area"),
                 "reasoning": question.get("reasoning"),
                 "method": method["name"],

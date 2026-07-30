@@ -1,10 +1,11 @@
 {
-  "experiment": "full-perception-tc8",
+  "experiment": "tc8-permuted-choice-robustness",
   "checkpoint": "microsoft/Mage-VL",
   "seed": 260724904,
   "max_pixels": 150000,
   "max_new_tokens": 8,
   "timing_repeats": 3,
+  "cyclic_option_rotation": true,
   "video_ids": [
     "video_10993",
     "video_2564",
