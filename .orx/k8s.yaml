@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: mage-vl-{{ORX_RUN}}
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: reproduction
+          image: nvcr.io/nvidia/pytorch:26.06-py3
+          command: ["bash", "-c", "$ORX_SCRIPT"]
+          resources:
+            requests:
+              nvidia.com/gpu: "4"
+              cpu: "32"
+              memory: "128Gi"
+            limits:
+              nvidia.com/gpu: "4"
+              cpu: "32"
+              memory: "128Gi"
