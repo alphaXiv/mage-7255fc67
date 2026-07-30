@@ -225,7 +225,10 @@ def worker(
             pre_seconds = time.perf_counter() - pre_start
             retained = visual_token_count(inputs, merge_size)
             canvas_count = int(inputs["image_grid_thw"].shape[0])
-            nominal_frames = min(total_frames, int(method["budget"]) * 8)
+            horizon_multiplier = 8 if method["backend"] == "codec" else 1
+            nominal_frames = min(
+                total_frames, int(method["budget"]) * horizon_multiplier
+            )
             if method["backend"] == "frames":
                 actual_frames = canvas_count
                 per_frame = retained / max(actual_frames, 1)
