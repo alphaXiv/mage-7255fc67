@@ -1,5 +1,5 @@
 {
-  "experiment": "full-perception-tc8",
+  "experiment": "full-perception-tc4-frontier",
   "checkpoint": "microsoft/Mage-VL",
   "seed": 260724904,
   "max_pixels": 150000,
@@ -17,15 +17,15 @@
   ],
   "methods": [
     {
-      "name": "uniform-frame8",
+      "name": "uniform-frame4",
       "backend": "frames",
-      "budget": 8
+      "budget": 4
     },
     {
-      "name": "hevc-tc8",
+      "name": "hevc-tc4",
       "backend": "codec",
       "codec_engine": "hevc",
-      "budget": 8
+      "budget": 4
     }
   ],
   "public_data": {
