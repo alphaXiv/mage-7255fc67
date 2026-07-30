@@ -110,6 +110,19 @@ def visual_token_count(inputs: dict, merge_size: int) -> int:
     return int((grid.prod(dim=-1) // (merge_size * merge_size)).sum().item())
 
 
+def selected_position_keys(inputs: dict, merge_size: int) -> list[int]:
+    """Compact merged-token coordinates for paired selector-overlap analysis."""
+    positions = inputs["patch_positions"].reshape(
+        -1, merge_size * merge_size, 3
+    )[:, 0, :]
+    keys = (
+        positions[:, 0].to(dtype=positions.dtype) * 1_000_000
+        + positions[:, 1] * 1_000
+        + positions[:, 2]
+    )
+    return sorted({int(value) for value in keys.cpu().tolist()})
+
+
 def source_frame_count(video_path: Path) -> int:
     import cv2
 
@@ -225,7 +238,10 @@ def worker(
             pre_seconds = time.perf_counter() - pre_start
             retained = visual_token_count(inputs, merge_size)
             canvas_count = int(inputs["image_grid_thw"].shape[0])
-            nominal_frames = min(total_frames, int(method["budget"]) * 8)
+            horizon_multiplier = 8 if method["backend"] == "codec" else 1
+            nominal_frames = min(
+                total_frames, int(method["budget"]) * horizon_multiplier
+            )
             if method["backend"] == "frames":
                 actual_frames = canvas_count
                 per_frame = retained / max(actual_frames, 1)
@@ -270,6 +286,10 @@ def worker(
                 "correct": prediction == int(question["answer_id"]),
                 "response": texts[0],
             }
+            if config.get("record_positions"):
+                record["selected_position_keys"] = selected_position_keys(
+                    inputs, merge_size
+                )
             output.put(("sample", record))
     output.put(("done", {"worker": worker_index}))
 

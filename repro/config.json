@@ -1,11 +1,12 @@
 {
-  "experiment": "perception-test-codec-scout",
+  "experiment": "dcvc-cross-codec-robustness",
   "checkpoint": "microsoft/Mage-VL",
   "seed": 260724904,
   "max_pixels": 150000,
   "max_new_tokens": 8,
   "timing_repeats": 3,
-  "video_ids": ["video_6860", "video_9253"],
+  "record_positions": true,
+  "video_ids": ["video_6860", "video_9253", "video_8241", "video_1580"],
   "methods": [
     {
       "name": "uniform-frame8",
@@ -16,6 +17,12 @@
       "name": "hevc-tc8",
       "backend": "codec",
       "codec_engine": "hevc",
+      "budget": 8
+    },
+    {
+      "name": "dcvc-tc8",
+      "backend": "codec",
+      "codec_engine": "dcvc-rt",
       "budget": 8
     }
   ],
