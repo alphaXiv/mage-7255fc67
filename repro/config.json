@@ -1,10 +1,10 @@
 {
-  "experiment": "full-perception-tc8",
+  "experiment": "tc8-independent-timing-replicate",
   "checkpoint": "microsoft/Mage-VL",
   "seed": 260724904,
   "max_pixels": 150000,
   "max_new_tokens": 8,
-  "timing_repeats": 3,
+  "timing_repeats": 5,
   "video_ids": [
     "video_10993",
     "video_2564",
