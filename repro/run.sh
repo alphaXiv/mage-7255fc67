@@ -20,7 +20,7 @@ python -m pip install -q \
   "opencv-python-headless>=4.10" "pillow>=10" "decord>=0.6" \
   "safetensors>=0.4" "codec-video-prep>=0.2.5"
 
-python repro/run_reproduction.py --config repro/config.json
+python repro/run_medium_control.py --config repro/config.json
 
 END_EPOCH=$(date +%s)
 echo "ORX_REPRO_END_UTC=$(date -u +%Y-%m-%dT%H:%M:%SZ)"

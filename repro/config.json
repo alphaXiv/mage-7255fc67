@@ -1,37 +1,37 @@
 {
-  "experiment": "full-perception-tc8",
+  "experiment": "licensed-medium-video-control",
   "checkpoint": "microsoft/Mage-VL",
   "seed": 260724904,
   "max_pixels": 150000,
-  "max_new_tokens": 8,
+  "max_new_tokens": 48,
   "timing_repeats": 3,
-  "video_ids": [
-    "video_10993",
-    "video_2564",
-    "video_874",
-    "video_3501",
-    "video_6860",
-    "video_9253",
-    "video_8241",
-    "video_1580"
+  "source": {
+    "name": "Big Buck Bunny",
+    "license": "Creative Commons Attribution 3.0",
+    "url": "https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4",
+    "project_url": "https://peach.blender.org/"
+  },
+  "clips": [
+    {"name": "bbb-60s", "start_seconds": 0, "duration_seconds": 60},
+    {"name": "bbb-120s", "start_seconds": 0, "duration_seconds": 120}
   ],
   "methods": [
     {
-      "name": "uniform-frame8",
+      "name": "uniform-frame64",
       "backend": "frames",
-      "budget": 8
+      "budget": 64
     },
     {
       "name": "hevc-tc8",
       "backend": "codec",
       "codec_engine": "hevc",
       "budget": 8
+    },
+    {
+      "name": "hevc-tc16",
+      "backend": "codec",
+      "codec_engine": "hevc",
+      "budget": 16
     }
-  ],
-  "public_data": {
-    "name": "Perception Test sample split",
-    "license": "MIT (lmms-lab packaging); original benchmark data are publicly released by Google DeepMind",
-    "videos_url": "https://storage.googleapis.com/dm-perception-test/zip_data/sample_videos.zip",
-    "annotations_url": "https://storage.googleapis.com/dm-perception-test/zip_data/sample_annotations.zip"
-  }
+  ]
 }
